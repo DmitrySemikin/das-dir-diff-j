@@ -1,2 +1,2 @@
 rootProject.name = 'das-dir-diff-j'
-include('app', 'das-dir-diff-lib', 'list', 'utilities')
+include('app', 'das-dir-diff-lib')
