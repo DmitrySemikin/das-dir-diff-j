@@ -1,0 +1,3 @@
+plugins {
+    id 'xyz.dsemikin.das.dirdiff.java-library-conventions'
+}
