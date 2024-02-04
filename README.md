@@ -4,12 +4,17 @@ Simple diff tool for comparing directories written in Java.
 **There is nothing to use in this project yet!**
 
 TODO:
-* write function, which collects information about all files and directories
+* IN WORK: write function, which collects information about all files and directories
   inside starting directory.
-  * Create some structure to store the results
-  * Differentiate between files, directories and "other objects" (maybe handle
+  * DONE: Create some structure to store the results
+  * DONE: Differentiate between files, directories and "other objects" (maybe handle
     links explicitly also)
-  * Identify entries with the Path relative to the starting directory.
+  * DONE: Identify entries with the Path relative to the starting directory.
+  * DONE: Create unit test for the function
+  * Use the function in "MainApp", so that one can use it interactively to examine
+    content of some dir.
+  * Think about how to handle the command line parameters of the App
+  * Think about how to print the report about content of the directory.
   * Advanced: Improve the results data structure, so that one can group files
     inside subdirectories, i.e. that one can take a subdirectory and list
     it's children
