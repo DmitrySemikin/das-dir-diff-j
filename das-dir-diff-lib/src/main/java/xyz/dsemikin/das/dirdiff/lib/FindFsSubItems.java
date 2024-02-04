@@ -43,7 +43,6 @@ public class FindFsSubItems {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        // TODO: implement collecting the items.
     }
 
     public Path getRootDir() {
