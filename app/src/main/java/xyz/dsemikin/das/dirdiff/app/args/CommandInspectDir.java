@@ -6,16 +6,33 @@ import com.beust.jcommander.converters.PathConverter;
 
 import java.nio.file.Path;
 
-@Parameters(commandNames = "inspect-dir", separators = "=", commandDescription = "Inspect content of the dir and print result.")
-public class CommandInspectDir {
+@Parameters(separators = "=", commandDescription = "Inspect content of the dir and print result.")
+public final class CommandInspectDir implements CmdSubcommand {
+
+    public static final String COMMAND_NAME = "inspect-dir";
+
     private Path dirToInspect = null;
+    private boolean ignoredArg;
 
     public Path getDirToInspect() {
         return dirToInspect;
     }
 
-    @Parameter(description = "Path of directory to inspect.", converter = PathConverter.class)
+    public boolean getIgnoredArg() {
+        return ignoredArg;
+    }
+
+    @Parameter(description = "<Path of directory to inspect>", converter = PathConverter.class)
     public void setDirToInspect(final Path dirToInspect) {
         this.dirToInspect = dirToInspect;
+    }
+
+    @Parameter(names = "--ignored-arg", description = "This argument is currently ignored.")
+    public void setIgnoredArg(final boolean ignoredArg) {
+        this.ignoredArg = ignoredArg;
+    }
+
+    public static String getCommandName() {
+        return COMMAND_NAME;
     }
 }
