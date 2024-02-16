@@ -5,7 +5,8 @@ import com.beust.jcommander.JCommander;
 public class ArgsParser {
 
     private final CommonArgs commonArgs;
-    private final CommandInspectDir commandInspectDir;
+    private final SubCmdArgsCollectDirFsItems subCmdArgsCollectDirFsItems;
+    private final SubCmdArgsCompareDirsFsItemsByName subCmdArgsCompareDirsFsItemsByName;
     private final JCommander jCommander;
 
     public static void printUsage() {
@@ -26,21 +27,23 @@ public class ArgsParser {
         return commonArgs;
     }
 
-    public CmdSubcommand getSubcommand() {
+    public SubCmdArgs getSubcommand() {
         final String parsedCommand = jCommander.getParsedCommand();
-        //noinspection SwitchStatementWithTooFewBranches
         return switch (parsedCommand) {
-            case CommandInspectDir.COMMAND_NAME -> commandInspectDir;
+            case SubCmdArgsCollectDirFsItems.COMMAND_NAME -> subCmdArgsCollectDirFsItems;
+            case SubCmdArgsCompareDirsFsItemsByName.COMMAND_NAME -> subCmdArgsCompareDirsFsItemsByName;
             default -> throw new IllegalStateException("Unexpected value: " + parsedCommand);
         };
     }
 
     private ArgsParser() {
         commonArgs = new CommonArgs();
-        commandInspectDir = new CommandInspectDir();
+        subCmdArgsCollectDirFsItems = new SubCmdArgsCollectDirFsItems();
+        subCmdArgsCompareDirsFsItemsByName = new SubCmdArgsCompareDirsFsItemsByName();
         jCommander = JCommander.newBuilder()
                 .addObject(commonArgs)
-                .addCommand(CommandInspectDir.COMMAND_NAME, commandInspectDir)
+                .addCommand(SubCmdArgsCollectDirFsItems.COMMAND_NAME, subCmdArgsCollectDirFsItems)
+                .addCommand(SubCmdArgsCompareDirsFsItemsByName.COMMAND_NAME, subCmdArgsCompareDirsFsItemsByName)
                 .build();
     }
 

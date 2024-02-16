@@ -8,7 +8,10 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-public class CompareFsItemsOfTwoDirsByName {
+public class CompareDirsFsItemsByName {
+
+    private final Path dir1;
+    private final Path dir2;
 
     private final Map<Path, FsItem> dir1FsItems;
     private final Map<Path, FsItem> dir2FsItems;
@@ -18,7 +21,10 @@ public class CompareFsItemsOfTwoDirsByName {
     private final Set<Path> dir1OnlyFsItemPaths;
     private final Set<Path> dir2OnlyFsItemPaths;
 
-    public CompareFsItemsOfTwoDirsByName(final Path dir1, final Path dir2) {
+    public CompareDirsFsItemsByName(final Path dir1, final Path dir2) {
+        this.dir1 = dir1;
+        this.dir2 = dir2;
+
         dir1FsItems = new FindFsSubItems(dir1).getFsItems();
         dir2FsItems = new FindFsSubItems(dir2).getFsItems();
 
@@ -64,5 +70,13 @@ public class CompareFsItemsOfTwoDirsByName {
 
     public Set<Path> getDir2OnlyFsItemPaths() {
         return dir2OnlyFsItemPaths;
+    }
+
+    public Path getDir1() {
+        return dir1;
+    }
+
+    public Path getDir2() {
+        return dir2;
     }
 }
