@@ -27,17 +27,18 @@ public class FindFsSubItems {
         try (Stream<Path> pathStream = Files.walk(rootDir)) {
             pathStream.forEach(
                     path -> {
+                        final Path relativePath = rootDir.relativize(path);
                         final FsItem fsItem;
                         if (Files.isDirectory(path)) {
-                            fsItem = new FsItemDir(path);
+                            fsItem = new FsItemDir(relativePath);
                         } else if (Files.isRegularFile(path)) {
-                            fsItem = new FsItemFile(path);
+                            fsItem = new FsItemFile(relativePath);
                         } else if (Files.isSymbolicLink(path)) {
-                            fsItem = new FsItemLink(path);
+                            fsItem = new FsItemLink(relativePath);
                         } else {
                             throw new RuntimeException("Unsupported/unknown FS-Item kind (not one of: dir, file, link): " + path);
                         }
-                        fsItems.put(path, fsItem);
+                        fsItems.put(relativePath, fsItem);
                     }
             );
         } catch (IOException e) {
