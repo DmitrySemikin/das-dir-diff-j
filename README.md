@@ -21,5 +21,7 @@ TODO:
   * Advanced: implement it using "walk" and "walkTree" and see if any of the two
     have any benefits.
 * write function to calculate the diff.
-  * First the comparison should be just by name.
-  * think, how to store the results...
+  * DONE: First the comparison should be just by name.
+  * DONE: think, how to store the results...
+  * Write test-cases and unit tests for this method
+  * Think, how to use it in for real thing.
