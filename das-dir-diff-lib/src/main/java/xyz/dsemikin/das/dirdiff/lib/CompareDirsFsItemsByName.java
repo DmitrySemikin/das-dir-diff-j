@@ -39,7 +39,7 @@ public class CompareDirsFsItemsByName {
         for (final Path dir1FsItemPath : dir1AllFsItemPaths) {
             if (dir2OnlyFsItemPaths.remove(dir1FsItemPath)) {
                 dir1OnlyFsItemPaths.remove(dir1FsItemPath);
-                if (Objects.equals(dir1FsItems.get(dir1FsItemPath), dir2FsItems.get(dir1FsItemPath))) {
+                if (Objects.equals(dir1FsItems.get(dir1FsItemPath).getKind(), dir2FsItems.get(dir1FsItemPath).getKind())) {
                     commonFsItemPaths.add(dir1FsItemPath);
                 } else {
                     differentKindsFsItemPaths.add(dir1FsItemPath);
