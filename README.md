@@ -23,5 +23,9 @@ TODO:
 * write function to calculate the diff.
   * DONE: First the comparison should be just by name.
   * DONE: think, how to store the results...
+  * Improve the output of comparison:
+    * Sort the output
+    * If directory is missing, don't print the whole content, but onsly some status (like how many files are missing).
+  * Add progress and some simple profiling print-outs - to see, what takes long time.
   * Write test-cases and unit tests for this method
   * Think, how to use it in for real thing.
