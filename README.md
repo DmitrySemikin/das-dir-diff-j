@@ -11,9 +11,9 @@ TODO:
     links explicitly also)
   * DONE: Identify entries with the Path relative to the starting directory.
   * DONE: Create unit test for the function
-  * Use the function in "MainApp", so that one can use it interactively to examine
+  * DONE: Use the function in "MainApp", so that one can use it interactively to examine
     content of some dir.
-  * Think about how to handle the command line parameters of the App
+  * DONE: Think about how to handle the command line parameters of the App
   * Think about how to print the report about content of the directory.
   * Advanced: Improve the results data structure, so that one can group files
     inside subdirectories, i.e. that one can take a subdirectory and list
