@@ -9,7 +9,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FindFsSubItems {
@@ -52,5 +54,24 @@ public class FindFsSubItems {
 
     public Map<Path, FsItem> getFsItems() {
         return fsItems;
+    }
+
+    public <FsItemKindType extends FsItem> List<FsItemKindType> getFsItemsOfType(Class<FsItemKindType> fsItemKindTypeClass) {
+        return fsItems.values().stream()
+                .filter(fsItemKindTypeClass::isInstance)
+                .map(fsItemKindTypeClass::cast)
+                .collect(Collectors.toList());
+    }
+
+    public List<FsItemDir> getDirs() {
+        return getFsItemsOfType(FsItemDir.class);
+    }
+
+    public List<FsItemFile> getFiles() {
+        return getFsItemsOfType(FsItemFile.class);
+    }
+
+    public List<FsItemLink> getLinks() {
+        return getFsItemsOfType(FsItemLink.class);
     }
 }
