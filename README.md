@@ -5,6 +5,7 @@ Simple diff tool for comparing directories written in Java.
 
 TODO:
 * Single dir analysis:
+  * Add some profiling code. Measure, what takes time - listing of the files, or comparison etc. Experiment with it.
   * For the files get file size
   * For the files calculate some check-sum/hash.
   * For large files estimate access speed (how to do it intelligently)?
@@ -33,9 +34,3 @@ TODO:
   * Write test-cases and unit tests for this method
   * Think, how to use it in for real thing.
 * Think how to make the API nice to be usable in interactive Java or Groovy session.
-
-* DONE: Use the function in "MainApp", so that one can use it interactively to examine
-  content of some dir.
-* DONE: Think about how to handle the command line parameters of the App
-* DONE: First the comparison should be just by name.
-* DONE: think, how to store the results...
