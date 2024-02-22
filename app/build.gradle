@@ -6,6 +6,10 @@ dependencies {
     implementation project(':das-dir-diff-lib')
 
     implementation "org.jcommander:jcommander:1.83"
+
+    compileOnly libs.slf4j.api
+    runtimeOnly libs.slf4j.simple
+
 }
 
 application {

@@ -1,2 +1,11 @@
 rootProject.name = 'das-dir-diff-j'
 include('app', 'das-dir-diff-lib')
+
+dependencyResolutionManagement {
+    versionCatalogs {
+        libs {
+            library('slf4j-api', 'org.slf4j:slf4j-api:2.0.10') // use it in "compileOnly" configuration
+            library('slf4j-simple', 'org.slf4j:slf4j-simple:2.0.10') // use it in "runtimeOnly"
+        }
+    }
+}
