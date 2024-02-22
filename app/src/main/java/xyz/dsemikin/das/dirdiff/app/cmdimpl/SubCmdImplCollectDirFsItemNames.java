@@ -2,11 +2,10 @@ package xyz.dsemikin.das.dirdiff.app.cmdimpl;
 
 import xyz.dsemikin.das.dirdiff.app.args.SubCmdArgsCollectDirFsItems;
 import xyz.dsemikin.das.dirdiff.lib.FindFsSubItems;
-import xyz.dsemikin.das.dirdiff.lib.reports.DirFsItemsPrinter;
 
 public class SubCmdImplCollectDirFsItemNames {
     public void run(final SubCmdArgsCollectDirFsItems subCmdArgsCollectDirFsItems) {
         final FindFsSubItems findResults = new FindFsSubItems(subCmdArgsCollectDirFsItems.getDirToInspect());
-        new DirFsItemsPrinter().print(findResults);
+//        new DirFsItemsPrinter().print(findResults);
     }
 }

@@ -1,9 +1,12 @@
 package xyz.dsemikin.das.dirdiff.lib;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import xyz.dsemikin.das.dirdiff.lib.fsitem.FsItem;
 import xyz.dsemikin.das.dirdiff.lib.fsitem.FsItemDir;
 import xyz.dsemikin.das.dirdiff.lib.fsitem.FsItemFile;
 import xyz.dsemikin.das.dirdiff.lib.fsitem.FsItemLink;
+import xyz.dsemikin.das.dirdiff.lib.utils.DasNanoTimer;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,6 +19,9 @@ import java.util.stream.Stream;
 
 public class FindFsSubItems {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(FindFsSubItems.class);
+    public static final int ITEMS_PER_PROFILING_CHECKPOINT = 1000;
+
     private final Path rootDir;
     private final Map<Path, FsItem> fsItems;
 
@@ -27,6 +33,9 @@ public class FindFsSubItems {
         }
 
         try (Stream<Path> pathStream = Files.walk(rootDir)) {
+            final DasNanoTimer timer = DasNanoTimer.start();
+            class InnerCounter { public Long counter = 0L; }
+            final InnerCounter itemCounter = new InnerCounter();
             pathStream.forEach(
                     path -> {
                         final Path relativePath = rootDir.relativize(path);
@@ -41,8 +50,22 @@ public class FindFsSubItems {
                             throw new RuntimeException("Unsupported/unknown FS-Item kind (not one of: dir, file, link): " + path);
                         }
                         fsItems.put(relativePath, fsItem);
+
+                        itemCounter.counter++;
+                        if (itemCounter.counter == ITEMS_PER_PROFILING_CHECKPOINT) {
+                            itemCounter.counter = 0L;
+                            final double lastIntervalSec = timer.checkpointAndGetLastIntervalSec();
+                            LOGGER.atInfo()
+                                    .setMessage("Processed 1000 items in {} sec with average speed {} items/sec")
+                                    .addArgument(lastIntervalSec)
+                                    .addArgument(((double)ITEMS_PER_PROFILING_CHECKPOINT)/ lastIntervalSec)
+                                    .log();
+                        }
                     }
             );
+            timer.checkpointAndLogElapsedTimeSec(LOGGER);
+            LOGGER.atInfo().setMessage("").addKeyValue("Total items", fsItems.size()).log();
+            LOGGER.atInfo().setMessage("").addKeyValue("Average processing time (items/sec)", ((double)fsItems.size())/timer.getFullIntervalSec()).log();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
