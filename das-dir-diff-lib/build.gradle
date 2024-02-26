@@ -4,4 +4,6 @@ plugins {
 
 dependencies {
     compileOnly libs.slf4j.api
+    testRuntimeOnly libs.slf4j.simple
+    implementation 'commons-codec:commons-codec:1.15'
 }
