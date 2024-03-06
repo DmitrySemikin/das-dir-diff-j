@@ -23,14 +23,14 @@ public class App {
         }
 
         final SubCmdArgs subcommand = argsParser.getSubcommand();
-        if (subcommand instanceof SubCmdArgsCollectDirFsItems subCmdArgsCollectDirFsItems) {
-            new SubCmdImplCollectDirFsItemNames().run(subCmdArgsCollectDirFsItems);
-        } else if (subcommand instanceof SubCmdArgsCompareDirsFsItemsByName subCmdArgsCompareDirsFsItemsByName) {
-            new SubCmdImplCompareDirsFsItemsByName().run(subCmdArgsCompareDirsFsItemsByName);
-        } else if (subcommand instanceof SubCmdArgsCollectDirFsItemMd5Sums subCmdArgsCollectDirFsItemMd5Sums) {
-            new SubCmdImplCollectDirFsItemMd5Subs().run(subCmdArgsCollectDirFsItemMd5Sums);
-        } else {
-            throw new IllegalStateException("Unknown subcommand type: " + subcommand.getClass());
+        switch (subcommand) {
+            case SubCmdArgsCollectDirFsItems subCmdArgsCollectDirFsItems ->
+                    new SubCmdImplCollectDirFsItemNames().run(subCmdArgsCollectDirFsItems);
+            case SubCmdArgsCompareDirsFsItemsByName subCmdArgsCompareDirsFsItemsByName ->
+                    new SubCmdImplCompareDirsFsItemsByName().run(subCmdArgsCompareDirsFsItemsByName);
+            case SubCmdArgsCollectDirFsItemMd5Sums subCmdArgsCollectDirFsItemMd5Sums ->
+                    new SubCmdImplCollectDirFsItemMd5Subs().run(subCmdArgsCollectDirFsItemMd5Sums);
+            case null, default -> throw new IllegalStateException("Unknown subcommand type: " + (subcommand != null ? subcommand.getClass() : "null"));
         }
     }
 }
