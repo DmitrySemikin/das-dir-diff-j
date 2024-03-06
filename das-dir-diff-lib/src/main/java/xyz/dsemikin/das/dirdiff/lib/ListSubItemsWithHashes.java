@@ -22,8 +22,12 @@ public class ListSubItemsWithHashes {
 
     public ListSubItemsWithHashes(
             final Path rootDir,
-            final Path outputFilePath
+            final Path outputFilePath,
+            final boolean overwrite
     ) {
+        if (!overwrite && Files.exists(outputFilePath)) {
+            throw new IllegalStateException("File " + outputFilePath + " already exists. Use overwrite option to force overwriting.");
+        }
         try (final BufferedWriter outputFile = new BufferedWriter(new FileWriter(outputFilePath.toFile()))) {
             try (final Stream<Path> pathStream = Files.walk(rootDir)) {
                 final DasNanoTimer timer = DasNanoTimer.start();
