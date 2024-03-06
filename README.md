@@ -8,9 +8,11 @@ TODO:
   * Done: Create implementation, which goes through the directory files, calculates their MD5 sums and
     stores them into text file.
   * Create sub-command of the application, which uses the implementation from above and create those files.
+  * Create unit tests for the algorithm, which writes hashes.
   * Create implementation, which would read the text files with relative paths and MD5 sums and compare
     them with the actual file system.
   * Create sub-command, which would use it.
+  * Create unit tests for algorithms, which checks hashes.
 * Single dir analysis:
   * Add some profiling code. Measure, what takes time - listing of the files, or comparison etc. Experiment with it.
   * For the files get file size
