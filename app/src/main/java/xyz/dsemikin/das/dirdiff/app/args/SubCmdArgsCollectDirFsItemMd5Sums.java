@@ -19,7 +19,7 @@ public final class SubCmdArgsCollectDirFsItemMd5Sums implements SubCmdArgs {
         return dirToInspect;
     }
 
-    @Parameter(names = {"-dir"}, description = "<Path of directory to inspect>", converter = PathConverter.class)
+    @Parameter(names = {"--dir"}, description = "<Path of directory to inspect>", converter = PathConverter.class)
     public void setDirToInspect(final Path dirToInspect) {
         this.dirToInspect = dirToInspect;
     }
@@ -28,7 +28,7 @@ public final class SubCmdArgsCollectDirFsItemMd5Sums implements SubCmdArgs {
         return outputFilePath;
     }
 
-    @Parameter(names = {"-output-file"}, description = "Path to file to be generated - text file with paths and md5 sums.", converter = PathConverter.class)
+    @Parameter(names = {"--output-file"}, description = "Path to file to be generated - text file with paths and md5 sums.", converter = PathConverter.class)
     public void setOutputFilePath(Path outputFilePath) {
         this.outputFilePath = outputFilePath;
     }
@@ -37,7 +37,7 @@ public final class SubCmdArgsCollectDirFsItemMd5Sums implements SubCmdArgs {
         return overwrite;
     }
 
-    @Parameter(names = {"-overwrite"}, description = "Overwrite existing output file, if exists.")
+    @Parameter(names = {"--overwrite"}, description = "Overwrite existing output file, if exists.")
     public void setOverwrite(boolean overwrite) {
         this.overwrite = overwrite;
     }
