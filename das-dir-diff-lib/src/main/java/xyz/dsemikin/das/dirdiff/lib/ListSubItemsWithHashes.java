@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 public class ListSubItemsWithHashes {
@@ -30,14 +31,16 @@ public class ListSubItemsWithHashes {
                 final InnerCounter itemCounter = new InnerCounter();
                 pathStream.forEach(
                         path -> {
-                            final Path relativePath = rootDir.relativize(path);
+                            final Path relativePath = Paths.get(".").resolve(rootDir.relativize(path)); // I want to have it in the form "./dirName" with "./" in front
                             final String line;
                             if (Files.isDirectory(path)) {
-                                line = "f " + relativePath + "\n";
+                                // 32-char empty field - to denote skipped md5 hash
+                                line = "d " + "                                " + " " + relativePath + "\n";
                             } else if (Files.isRegularFile(path)) {
                                 line = generateLineForFileFsItem(path, relativePath);
                             } else if (Files.isSymbolicLink(path)) {
-                                line = "l " + relativePath + "\n";
+                                // 32-char empty field - to denote skipped md5 hash
+                                line = "l " + "                                " + " "  + relativePath + "\n";
                             } else {
                                 throw new RuntimeException("Unsupported/unknown FS-Item kind (not one of: dir, file, link): " + path);
                             }
