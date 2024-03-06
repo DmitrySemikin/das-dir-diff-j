@@ -7,7 +7,7 @@ TODO:
 * Compare directory files including contents (md5)
   * Done: Create implementation, which goes through the directory files, calculates their MD5 sums and
     stores them into text file.
-  * Create sub-command of the application, which uses the implementation from above and create those files.
+  * Done: Create sub-command of the application, which uses the implementation from above and create those files.
   * Create unit tests for the algorithm, which writes hashes.
   * Create implementation, which would read the text files with relative paths and MD5 sums and compare
     them with the actual file system.
