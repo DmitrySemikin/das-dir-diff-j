@@ -4,6 +4,10 @@ Simple diff tool for comparing directories written in Java.
 **There is nothing to use in this project yet!**
 
 TODO:
+* Next steps:
+  * Use parameter files - yaml?
+  * Support "exclude directories" (or handle exception "access denied")
+  * Compare two files with the lists.
 * Compare directory files including contents (md5)
   * Done: Create implementation, which goes through the directory files, calculates their MD5 sums and
     stores them into text file.
@@ -43,3 +47,6 @@ TODO:
   * Write test-cases and unit tests for this method
   * Think, how to use it in for real thing.
 * Think how to make the API nice to be usable in interactive Java or Groovy session.
+
+Target volume: 3M-5M fs items.
+Memory (very roughly: 0.5K*5M = 2.5G - should be OK. Adjust Java options?)
