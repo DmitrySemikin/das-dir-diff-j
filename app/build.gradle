@@ -6,6 +6,7 @@ dependencies {
     implementation project(':das-dir-diff-lib')
 
     implementation "org.jcommander:jcommander:1.83"
+    implementation "org.snakeyaml:snakeyaml-engine:2.7"
 
     compileOnly libs.slf4j.api
     runtimeOnly libs.slf4j.simple
