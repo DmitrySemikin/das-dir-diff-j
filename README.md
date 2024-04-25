@@ -5,7 +5,8 @@ Simple diff tool for comparing directories written in Java.
 
 TODO:
 * Next steps:
-  * Use parameter files - yaml?
+  * Use parameter files - yaml? - no, instead of YAML just use the "@" files, which work out of the box
+    with JCommander args parser. It also supports lists of values in the arguments.
   * Support "exclude directories" (or handle exception "access denied")
   * Compare two files with the lists.
 * Compare directory files including contents (md5)
