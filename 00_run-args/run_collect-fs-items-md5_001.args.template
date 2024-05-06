@@ -1,0 +1,4 @@
+collect-fs-items-md5
+--dir C:\tmp\dir1
+--output-file C:\tmp\dir1-list-md5.txt
+--overwrite
