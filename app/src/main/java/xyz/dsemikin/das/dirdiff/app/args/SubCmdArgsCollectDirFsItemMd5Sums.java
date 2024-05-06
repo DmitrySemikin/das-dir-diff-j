@@ -5,6 +5,8 @@ import com.beust.jcommander.Parameters;
 import com.beust.jcommander.converters.PathConverter;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 @Parameters(separators = "=", commandDescription = "Inspect content of the dir and print result.")
 public final class SubCmdArgsCollectDirFsItemMd5Sums implements SubCmdArgs {
@@ -13,7 +15,9 @@ public final class SubCmdArgsCollectDirFsItemMd5Sums implements SubCmdArgs {
 
     private Path dirToInspect = null;
     private Path outputFilePath = null;
+    private List<Path> excludeDirectories = new ArrayList<>();
     private boolean overwrite = false;
+    private boolean abortOnAccessDenied = false;
 
     public Path getDirToInspect() {
         return dirToInspect;
@@ -40,5 +44,23 @@ public final class SubCmdArgsCollectDirFsItemMd5Sums implements SubCmdArgs {
     @Parameter(names = {"--overwrite"}, description = "Overwrite existing output file, if exists.")
     public void setOverwrite(boolean overwrite) {
         this.overwrite = overwrite;
+    }
+
+    public List<Path> getExcludeDirectories() {
+        return excludeDirectories;
+    }
+
+    @Parameter(names = {"--exclude-dir"}, description = "Directory (relative to root) to exclude. May be used multiple times.", converter = PathConverter.class)
+    public void setExcludeDirectories(List<Path> excludeDirectories) {
+        this.excludeDirectories = excludeDirectories;
+    }
+
+    public boolean isAbortOnAccessDenied() {
+        return abortOnAccessDenied;
+    }
+
+    @Parameter(names = {"--abort-on-access-denied"}, description = "If this flag is set and some directory cannot be read, the process will abort. If this flag is ste, the dir will be skipped.")
+    public void setAbortOnAccessDenied(boolean abortOnAccessDenied) {
+        this.abortOnAccessDenied = abortOnAccessDenied;
     }
 }
