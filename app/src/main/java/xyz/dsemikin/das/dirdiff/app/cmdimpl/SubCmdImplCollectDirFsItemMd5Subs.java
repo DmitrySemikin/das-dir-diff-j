@@ -9,8 +9,10 @@ public class SubCmdImplCollectDirFsItemMd5Subs {
             new ListSubItemsWithHashes(
                 subCmdArgsCollectDirFsItemMd5Sums.getDirToInspect(),
                 subCmdArgsCollectDirFsItemMd5Sums.getOutputFilePath(),
-                subCmdArgsCollectDirFsItemMd5Sums.isOverwrite()
-        );
+                subCmdArgsCollectDirFsItemMd5Sums.getExcludeDirectories(),
+                subCmdArgsCollectDirFsItemMd5Sums.isOverwrite(),
+                subCmdArgsCollectDirFsItemMd5Sums.isAbortOnAccessDenied()
+            );
         // TODO: print out report.
     }
 }

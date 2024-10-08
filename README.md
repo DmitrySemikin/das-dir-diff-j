@@ -10,15 +10,16 @@ We already have:
 
 TODO:
 * Next steps:
-  * `collect-fs-items-md5` - Support "exclude directories" (currently accepts args, but not use it)
-  * `collect-fs-items-md5` - Handle exception "access denied" - add option to skip dir.
-    * `collect-fs-items-md5` - Collect information on skipped dirs and include it into the report.
+  * Done: `collect-fs-items-md5` - Support "exclude directories" (currently accepts args, but not use it)
+  * Done: `collect-fs-items-md5` - Handle exception "access denied" - add option to skip dir.
+    * Done: `collect-fs-items-md5` - Collect information on skipped dirs.
+    * Done: `collect-fs-items-md5` - fix error: directories are not added to the list - need to do it in the pre- or post-visit methods of file visitor.
+  * `collect-fs-items-md5` - prepare the report including the info about skipped directories and exceptions.
+  * `collect-fs-items-md5` - Create unit tests for the algorithm, which writes hashes.
+
   * new-command: Compare two files with the lists.
+  * ListSubItemsWithHashes.CustomFileVisitor - we need to extract it and reuse in implementation of other commands for filtering excluded directories.
 * Compare directory files including contents (md5)
-  * Done: Create implementation, which goes through the directory files, calculates their MD5 sums and
-    stores them into text file.
-  * Done: Create sub-command of the application, which uses the implementation from above and create those files.
-  * Create unit tests for the algorithm, which writes hashes.
   * Create implementation, which would read the text files with relative paths and MD5 sums and compare
     them with the actual file system.
   * Create sub-command, which would use it.
