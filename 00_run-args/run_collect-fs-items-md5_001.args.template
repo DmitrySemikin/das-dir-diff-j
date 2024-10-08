@@ -1,4 +1,6 @@
 collect-fs-items-md5
 --dir C:\tmp\dir1
 --output-file C:\tmp\dir1-list-md5.txt
+--exclude-dir .\dir-exclude
+--exclude-dir .\dir-exclude-2
 --overwrite
