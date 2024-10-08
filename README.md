@@ -3,10 +3,17 @@ Simple diff tool for comparing directories written in Java.
 
 **There is nothing to use in this project yet!**
 
+We already have:
+* `collect-fs-items-names`        - Inspect content of the dir and print result.
+* `compare-dirs-fs-items-by-name` - Compare content of two directories by comparing names.
+* `collect-fs-items-md5`          - Calculate MD5 for each file in the dir and save result to file.
+
 TODO:
 * Next steps:
-  * Support "exclude directories" (and handle exception "access denied")
-  * Compare two files with the lists.
+  * `collect-fs-items-md5` - Support "exclude directories" (currently accepts args, but not use it)
+  * `collect-fs-items-md5` - Handle exception "access denied" - add option to skip dir.
+    * `collect-fs-items-md5` - Collect information on skipped dirs and include it into the report.
+  * new-command: Compare two files with the lists.
 * Compare directory files including contents (md5)
   * Done: Create implementation, which goes through the directory files, calculates their MD5 sums and
     stores them into text file.
