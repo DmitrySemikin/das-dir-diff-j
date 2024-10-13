@@ -26,10 +26,14 @@ public class ListSubItemsWithMd5 {
     private static final long ITEMS_PER_PROFILING_CHECKPOINT = 1000;
 
     // TODO: these fields are results. Pack them into dedicated nested static class.
+    private final Path rootDir;
+    private final boolean abortOnError;
     private final List<Path> excludeDirConfig;
     private final FSItemWithMd5Consumer fsItemConsumer;
     private final List<Path> skippedDirsExcluded;
     private final Map<Path, Exception> skippedDirsNoAccess;
+
+    private final DasNanoTimer timer;
 
     public ListSubItemsWithMd5(
             final Path rootDir,
@@ -37,13 +41,15 @@ public class ListSubItemsWithMd5 {
             final boolean abortOnAccessError,
             final FSItemWithMd5Consumer fsItemConsumer
     ) {
+        this.rootDir = rootDir;
+        this.abortOnError = abortOnAccessError;
         excludeDirConfig = excludeDirectories;
         this.fsItemConsumer = fsItemConsumer;
         skippedDirsExcluded = new ArrayList<>();
         skippedDirsNoAccess = new HashMap<>();
 
 
-        final DasNanoTimer timer = DasNanoTimer.start();
+        timer = DasNanoTimer.start();
 
         final CustomFileVisitor fileVisitor = new CustomFileVisitor(rootDir, excludeDirectories, fsItemConsumer, timer, abortOnAccessError);
         // TODO: We can also use the "file options" argument of "walk directory tree" to deal with symbolic links.
@@ -73,6 +79,19 @@ public class ListSubItemsWithMd5 {
         }
 
     }
+
+    public Path getRootDir() {
+        return rootDir;
+    }
+
+    public boolean getAbortOnError() {
+        return abortOnError;
+    }
+
+    public DasNanoTimer getTimer() {
+        return timer;
+    }
+
 
     private static class CustomCounter {
         public Long counter = 0L;

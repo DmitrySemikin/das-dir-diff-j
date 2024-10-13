@@ -1,6 +1,6 @@
 package xyz.dsemikin.das.dirdiff.lib.algorithms;
 
-public class FSItemWithMd5ConsumerInMemory implements FSItemWithMd5Consumer {
+public class FSItemWithMd5ConsumerInMemory extends FSItemWithMd5ConsumerWithCounterAbstract {
 
     @Override
     public void close() {
@@ -8,7 +8,7 @@ public class FSItemWithMd5ConsumerInMemory implements FSItemWithMd5Consumer {
     }
 
     @Override
-    public void consumeFsItemWithMd5(FSItemWithMd5 fsItem) {
+    public void consumeFsItemWithMd5Impl(FSItemWithMd5 fsItem) {
         // TODO
     }
 }

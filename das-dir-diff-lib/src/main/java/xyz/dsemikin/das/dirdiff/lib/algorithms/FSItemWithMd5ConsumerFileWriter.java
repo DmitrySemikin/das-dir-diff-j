@@ -7,7 +7,7 @@ import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class FSItemWithMd5ConsumerFileWriter implements FSItemWithMd5Consumer {
+public class FSItemWithMd5ConsumerFileWriter extends FSItemWithMd5ConsumerWithCounterAbstract {
 
     private final BufferedWriter outputFile;
 
@@ -32,7 +32,7 @@ public class FSItemWithMd5ConsumerFileWriter implements FSItemWithMd5Consumer {
     }
 
     @Override
-    public void consumeFsItemWithMd5(final FSItemWithMd5 fsItem) {
+    public void consumeFsItemWithMd5Impl(final FSItemWithMd5 fsItem) {
         // 32-char empty field - to denote skipped md5 hash
         final String emptyMd5Field = "                                ";
         final String line = switch (fsItem.getKind()) {

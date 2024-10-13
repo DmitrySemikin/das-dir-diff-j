@@ -29,6 +29,9 @@ TODO:
   * `collect-fs-items-md5` - prepare the report including the info about
     skipped directories and exceptions and profiling information.
   * `collect-fs-items-md5` - Create unit tests for each class involved into the app, which creates file with list of hashes: algorithm, report and app.
+  * `collect-fs-items-md5` - Option to print report into the file? Logging?
+  * `collect-fs-items-md5` - During execution show soome progress (e.g. how many items were processed)
+  * `collect-fs-items-md5` - What else we may want to log? Or print out into Console during execution for long runs?
   * Decision: When we do comparison of two lists of FS items, we load both
     lists into memory and then perform comparison in memory (see
     "Architectureal Decisions" below).
