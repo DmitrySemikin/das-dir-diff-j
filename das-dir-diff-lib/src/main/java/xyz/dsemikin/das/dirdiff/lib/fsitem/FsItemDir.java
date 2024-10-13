@@ -3,7 +3,7 @@ package xyz.dsemikin.das.dirdiff.lib.fsitem;
 import java.nio.file.Path;
 
 public class FsItemDir extends FsItem {
-    public FsItemDir(Path path) {
+    public FsItemDir(final Path path) {
         super(path);
     }
 
