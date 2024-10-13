@@ -1,5 +1,16 @@
 # das-dir-diff-j
-Simple diff tool for comparing directories written in Java.
+
+Simple diff tool written in Java for comparing directories.
+
+License: GNU AFFERO GENERAL PUBLIC LICENSE.
+
+Short rough idea of the license, as I interpret it: The code is
+not allowed (without explicit written consent of the author) to be used in
+commercial products, which are directly sold to
+customers or which support services, which are sold to customers (e.g. in
+the implementation of the backend of the server, which implements services
+sold to the end customers).
+
 
 **There is nothing to use in this project yet!**
 
