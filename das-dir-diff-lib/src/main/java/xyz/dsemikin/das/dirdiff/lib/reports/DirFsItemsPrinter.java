@@ -1,6 +1,6 @@
 package xyz.dsemikin.das.dirdiff.lib.reports;
 
-import xyz.dsemikin.das.dirdiff.lib.FindFsSubItems;
+import xyz.dsemikin.das.dirdiff.lib.algorithms.FindFsSubItems;
 
 public class DirFsItemsPrinter {
     public void print(final FindFsSubItems fsSubItems) {

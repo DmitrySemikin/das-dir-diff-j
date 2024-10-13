@@ -1,4 +1,4 @@
-package xyz.dsemikin.das.dirdiff.lib;
+package xyz.dsemikin.das.dirdiff.lib.algorithms;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

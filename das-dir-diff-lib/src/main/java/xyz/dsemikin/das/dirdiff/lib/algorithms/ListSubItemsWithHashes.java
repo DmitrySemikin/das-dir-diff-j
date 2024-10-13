@@ -1,4 +1,4 @@
-package xyz.dsemikin.das.dirdiff.lib;
+package xyz.dsemikin.das.dirdiff.lib.algorithms;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;

@@ -1,7 +1,7 @@
 package xyz.dsemikin.das.dirdiff.app.cmdimpl;
 
 import xyz.dsemikin.das.dirdiff.app.args.SubCmdArgsCollectDirFsItemMd5Sums;
-import xyz.dsemikin.das.dirdiff.lib.ListSubItemsWithHashes;
+import xyz.dsemikin.das.dirdiff.lib.algorithms.ListSubItemsWithHashes;
 
 public class SubCmdImplCollectDirFsItemMd5Subs {
     public void run(final SubCmdArgsCollectDirFsItemMd5Sums subCmdArgsCollectDirFsItemMd5Sums) {

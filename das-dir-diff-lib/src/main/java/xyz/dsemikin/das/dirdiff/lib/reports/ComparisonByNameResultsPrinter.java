@@ -1,6 +1,6 @@
 package xyz.dsemikin.das.dirdiff.lib.reports;
 
-import xyz.dsemikin.das.dirdiff.lib.CompareDirsFsItemsByName;
+import xyz.dsemikin.das.dirdiff.lib.algorithms.CompareDirsFsItemsByName;
 
 import java.nio.file.Path;
 

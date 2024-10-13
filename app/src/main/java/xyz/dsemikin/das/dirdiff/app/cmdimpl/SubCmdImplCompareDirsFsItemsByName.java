@@ -1,7 +1,7 @@
 package xyz.dsemikin.das.dirdiff.app.cmdimpl;
 
 import xyz.dsemikin.das.dirdiff.app.args.SubCmdArgsCompareDirsFsItemsByName;
-import xyz.dsemikin.das.dirdiff.lib.CompareDirsFsItemsByName;
+import xyz.dsemikin.das.dirdiff.lib.algorithms.CompareDirsFsItemsByName;
 import xyz.dsemikin.das.dirdiff.lib.reports.ComparisonByNameResultsPrinter;
 
 public class SubCmdImplCompareDirsFsItemsByName {

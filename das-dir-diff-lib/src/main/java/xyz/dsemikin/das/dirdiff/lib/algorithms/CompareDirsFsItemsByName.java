@@ -1,4 +1,4 @@
-package xyz.dsemikin.das.dirdiff.lib;
+package xyz.dsemikin.das.dirdiff.lib.algorithms;
 
 import xyz.dsemikin.das.dirdiff.lib.fsitem.FsItem;
 
