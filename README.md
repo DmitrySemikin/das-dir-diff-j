@@ -14,11 +14,18 @@ TODO:
   * Done: `collect-fs-items-md5` - Handle exception "access denied" - add option to skip dir.
     * Done: `collect-fs-items-md5` - Collect information on skipped dirs.
     * Done: `collect-fs-items-md5` - fix error: directories are not added to the list - need to do it in the pre- or post-visit methods of file visitor.
-  * `collect-fs-items-md5` - prepare the report including the info about skipped directories and exceptions.
-  * `collect-fs-items-md5` - Create unit tests for the algorithm, which writes hashes.
 
+  * `collect-fs-items-md5` - prepare the report including the info about
+    skipped directories and exceptions and profiling information.
+  * `collect-fs-items-md5` - Create unit tests for each class involved into the app, which creates file with list of hashes: algorithm, report and app.
+  * Decision: When we do comparison of two lists of FS items, we load both
+    lists into memory and then perform comparison in memory (see
+    "Architectureal Decisions" below).
+  * Implement algorithm for reading the list of hashes from file into memory data structure
+    * ListSubItemsWithHashes.CustomFileVisitor - we need to extract it and reuse in implementation of other commands for filtering excluded directories.
+  * Implement an algorithm to compare two lists of hashes.
+  * New-Command: check-integrity (compare actual directory state with the hashes list from file)
   * new-command: Compare two files with the lists.
-  * ListSubItemsWithHashes.CustomFileVisitor - we need to extract it and reuse in implementation of other commands for filtering excluded directories.
 * Compare directory files including contents (md5)
   * Create implementation, which would read the text files with relative paths and MD5 sums and compare
     them with the actual file system.
@@ -59,6 +66,48 @@ TODO:
 
 Target volume: 3M-5M fs items.
 Memory (very roughly: 0.5K*5M = 2.5G - should be OK. Adjust Java options?)
+
+
+## Architectural decisions
+
+### DES.1 - Comparison in memory
+
+Do we want to do comparison of two directory contents (probably loaded from
+serialized form from file) in memory, or during loading it.
+
+Decision: we load both lists and then compare them in memory.
+
+Rationale: It is expected, that size of the lists should not be to large
+
+Estimation: 
+1 record ~100b Bytes.
+Max files: 3-5 M
+Max list size: 300-500 Mb
+
+Possible optimisation: Keep only first list in memory and do comparison while
+loading the second list on the fly.
+
+Note: it does not seem reasonable to try to work with both lists on file,
+because this would mean, that we need to do lookups on disk, on the
+structures, which are not optimized for it. So it does not seem feasible
+without optimizing serialization structures for this purpose.
+
+
+### DES.2 Run configs
+
+Requirement: be able to collect input parameters for runs in a file (config
+file) to be able to simply run the application with given configuration
+(e.g. for test purposes).
+
+I thought about different formats (e.g. YAMS, TOML etc.). But it turned out,
+that using them is not absolutely trivial out of the box. And on the other
+hand I reaized, that I already have something, which kind of fulfils my
+requirements. Specifically JCommander, which I used for parsing input
+arguments support use of "@argfile" files, so that I can collect the groups
+of parameter values I need into such files.
+
+Note: if I later have more complicated use cases, I will maybe still switch
+to one of other configuration file formats.
 
 
 ## High level vision
