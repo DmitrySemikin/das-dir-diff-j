@@ -25,12 +25,12 @@ TODO:
   * Done: `collect-fs-items-md5` - Handle exception "access denied" - add option to skip dir.
     * Done: `collect-fs-items-md5` - Collect information on skipped dirs.
     * Done: `collect-fs-items-md5` - fix error: directories are not added to the list - need to do it in the pre- or post-visit methods of file visitor.
-
-  * `collect-fs-items-md5` - prepare the report including the info about
+  * Done: `collect-fs-items-md5` - prepare the report including the info about
     skipped directories and exceptions and profiling information.
-  * `collect-fs-items-md5` - Create unit tests for each class involved into the app, which creates file with list of hashes: algorithm, report and app.
-  * `collect-fs-items-md5` - Option to print report into the file? Logging?
-  * `collect-fs-items-md5` - During execution show soome progress (e.g. how many items were processed)
+
+  * `collect-fs-items-md5` - Create unit tests for classes implementing list of hashes: ListSubItemsWithMd5, FSItemWithMd5ConsumerFileWriter
+  * `collect-fs-items-md5` - Option to print report into the file? Logging? Or maybe postpone it for later (can be handled with tee etc.)
+  * `collect-fs-items-md5` - During execution show soome progress (e.g. how many items were processed). Maybe postpone for later - not the mandatory feature.
   * `collect-fs-items-md5` - What else we may want to log? Or print out into Console during execution for long runs?
   * Decision: When we do comparison of two lists of FS items, we load both
     lists into memory and then perform comparison in memory (see
@@ -122,6 +122,24 @@ of parameter values I need into such files.
 
 Note: if I later have more complicated use cases, I will maybe still switch
 to one of other configuration file formats.
+
+
+### DES.3 No unit tests for apps and reports
+
+After some thinking about it I decided, not to cover reports and app classes
+with unit tests. The reason for this is:
+
+* Reports are by their nature take some information in the form of some
+  objects and then render it as text. At this point I don't want to check,
+  that the rendering is somehow correct. If I don't change the report, then
+  I don't really need to test it. And if I change the report, then it will
+  most likely break the test...
+
+* Similar situation is with the application classes: they receive command
+  line args and invoke corresponding arlgorithm with those args. At the
+  give stage of the development I will rather fundamentally change the
+  way apps work as changing some internal implementation, thus I find
+  that automated testing is not that beneficial.
 
 
 ## High level vision
