@@ -47,7 +47,8 @@ TODO:
   * Create unit tests for algorithms, which checks hashes.
   * Create command "check integrity", which would compare given directory with given file of md5 sums.
   * Enable possibility to compare multiple pairs of directories (batch mode)
-  * Learn to work with subdirectories and for the hash-list-files stored in the subdirectories.
+  * How to work with subdirectories and for the hash-list-files stored in the subdirectories.
+  * Support interruption and continuation of the calculation of the hashes.
   * Create multi-compare comand, where one directory is considered to be master and other multiple directories are compared to it and the results are reported.
 * Single dir analysis:
   * Add some profiling code. Measure, what takes time - listing of the files, or comparison etc. Experiment with it.
