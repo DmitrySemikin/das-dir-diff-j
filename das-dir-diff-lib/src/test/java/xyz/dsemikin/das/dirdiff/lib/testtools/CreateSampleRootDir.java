@@ -21,16 +21,16 @@ public class CreateSampleRootDir {
         }
     }
 
-    private static void createSampleDirContent(final Path tempDirectory) {
+    private static void createSampleDirContent(final Path rootDirectory) {
         try {
-            for (final Map.Entry<Path, String> entry : filesToCreate().entrySet()) {
-                final Path path = tempDirectory.resolve(entry.getKey());
-                final String content = entry.getValue();
+            for (final Map.Entry<Path, String> filePathAndContent : filesToCreate().entrySet()) {
+                final Path path = rootDirectory.resolve(filePathAndContent.getKey());
+                final String content = filePathAndContent.getValue();
                 Files.createDirectories(path.getParent());
                 Files.writeString(path, content, StandardOpenOption.CREATE_NEW);
             }
             for (final Path path : emptyDirsToCreate()) {
-                Files.createDirectories(tempDirectory.resolve(path));
+                Files.createDirectories(rootDirectory.resolve(path));
             }
         }
         catch (IOException e) {
