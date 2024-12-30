@@ -6,7 +6,7 @@ public interface FSItemWithMd5Consumer extends Closeable {
 
     void consumeFsItemWithMd5(FSItemWithMd5 fsItem);
 
-    Long getConsumedFsItemsTotalCount();
-    Long getConsumedDirsCount();
-    Long getConsumedFilesCount();
+    long getConsumedFsItemsTotalCount();
+    long getConsumedDirsCount();
+    long getConsumedFilesCount();
 }

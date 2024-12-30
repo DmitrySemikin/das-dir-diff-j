@@ -19,17 +19,17 @@ public abstract class FSItemWithMd5ConsumerWithCounterAbstract implements FSItem
     abstract void consumeFsItemWithMd5Impl(FSItemWithMd5 fsItem);
 
     @Override
-    public Long getConsumedFsItemsTotalCount() {
+    public long getConsumedFsItemsTotalCount() {
         return consumedFilesCount + consumedDirsCount;
     }
 
     @Override
-    public Long getConsumedDirsCount() {
+    public long getConsumedDirsCount() {
         return consumedDirsCount;
     }
 
     @Override
-    public Long getConsumedFilesCount() {
+    public long getConsumedFilesCount() {
         return consumedFilesCount;
     }
 

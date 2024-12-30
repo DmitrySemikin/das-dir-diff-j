@@ -14,22 +14,26 @@ public class CreateSampleRootDir {
     public static Path createSampleRootDir() {
         try {
             final Path tempDirectory = Files.createTempDirectory("das-dir-diff-lib-test");
-            createSampleDirContent(tempDirectory);
+            createTestDirContent(tempDirectory, filesToCreate(), emptyDirsToCreate());
             return tempDirectory;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private static void createSampleDirContent(final Path rootDirectory) {
+    public static void createTestDirContent(
+            final Path rootDirectory,
+            final Map<Path, String> filesToCreate,
+            final List<Path> emptyDirsToCreate
+    ) {
         try {
-            for (final Map.Entry<Path, String> filePathAndContent : filesToCreate().entrySet()) {
+            for (final Map.Entry<Path, String> filePathAndContent : filesToCreate.entrySet()) {
                 final Path path = rootDirectory.resolve(filePathAndContent.getKey());
                 final String content = filePathAndContent.getValue();
                 Files.createDirectories(path.getParent());
                 Files.writeString(path, content, StandardOpenOption.CREATE_NEW);
             }
-            for (final Path path : emptyDirsToCreate()) {
+            for (final Path path : emptyDirsToCreate) {
                 Files.createDirectories(rootDirectory.resolve(path));
             }
         }
