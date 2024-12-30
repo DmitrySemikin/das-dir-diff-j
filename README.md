@@ -28,7 +28,9 @@ TODO:
   * Done: `collect-fs-items-md5` - prepare the report including the info about
     skipped directories and exceptions and profiling information.
 
-  * `collect-fs-items-md5` - Create unit tests for classes implementing list of hashes: ListSubItemsWithMd5, FSItemWithMd5ConsumerFileWriter
+  * `collect-fs-items-md5` - Create unit tests for classes implementing list of hashes: ListSubItemsWithMd5,
+     FSItemWithMd5ConsumerFileWriter,
+     FSItemWithMd5
   * `collect-fs-items-md5` - Option to print report into the file? Logging? Or maybe postpone it for later (can be handled with tee etc.)
   * `collect-fs-items-md5` - During execution show soome progress (e.g. how many items were processed). Maybe postpone for later - not the mandatory feature.
   * `collect-fs-items-md5` - What else we may want to log? Or print out into Console during execution for long runs?
