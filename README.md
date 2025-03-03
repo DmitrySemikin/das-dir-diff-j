@@ -29,8 +29,8 @@ TODO:
     skipped directories and exceptions and profiling information.
 
   * `collect-fs-items-md5` - Create unit tests for classes implementing list of hashes: ListSubItemsWithMd5,
-     FSItemWithMd5ConsumerFileWriter,
      FSItemWithMd5,
+     FSItemWithMd5ConsumerFileWriter,
      FindFsSubItems - (debt)
   * `collect-fs-items-md5` - Option to print report into the file? Logging? Or maybe postpone it for later (can be handled with tee etc.)
   * `collect-fs-items-md5` - During execution show soome progress (e.g. how many items were processed). Maybe postpone for later - not the mandatory feature.
