@@ -16,7 +16,7 @@ public class FSItemWithMd5 {
     private final FsItemKind kind;
     final private String md5;
 
-    private static final String EMPTY_MD5_FIELD = "                                ";
+    public static final String EMPTY_MD5_FIELD = "                                ";
 
 
     public FSItemWithMd5(final Path path, final Path rootDir) {
@@ -30,7 +30,7 @@ public class FSItemWithMd5 {
 
         if (Files.isRegularFile(absolutePath)) {
             kind = FsItemKind.FS_ITEM_FILE;
-            try (final InputStream inputStream = Files.newInputStream(path)) {
+            try (final InputStream inputStream = Files.newInputStream(absolutePath)) {
                 md5 = DigestUtils.md5Hex(inputStream);
             } catch (IOException e) {
                 throw new RuntimeException(e);
