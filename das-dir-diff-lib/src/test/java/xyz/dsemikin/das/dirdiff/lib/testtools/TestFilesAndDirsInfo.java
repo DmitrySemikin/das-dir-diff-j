@@ -37,17 +37,14 @@ public class TestFilesAndDirsInfo {
         return rootDir;
     }
 
-    // TODO: We actually don't need to check this, if we check the content of the Sets
     public long getCountOfDirsToBeConsumed() {
         return dirsToBeConsumed.size();
     }
 
-    // TODO: We actually don't need to check this, if we check the content of the Sets
     public long getCountOfFilesToBeConsumed() {
         return filesToBeConsumed.size();
     }
 
-    // TODO: We actually don't need to check this, if we check the content of the Sets
     public long getCountOfFsItemsToBeConsumed() {
         return getCountOfDirsToBeConsumed() + getCountOfFilesToBeConsumed();
     }
