@@ -15,7 +15,6 @@ import java.util.Set;
 
 public class ListSubItemsWithMd5Test {
 
-    // TODO:
     // What we actually want to test here?
     // * Simple win is - getters
     //   * getRootDir
@@ -33,9 +32,6 @@ public class ListSubItemsWithMd5Test {
     //     To test it manually one can run the algorithm on a usb drive with NTFS - the system information dir
     //     there cannot be accessed and it causes such an error.
     //   * Test that timer was triggered (e.g. that the time span has not zero length).
-
-
-    // TODO: assertions are in: static org.junit.jupiter.api.Assertions.*;
 
     private static final boolean dontAbortOnAccessError = false; // false means "don't abort". It is always false - we don't test this option in this class
 
