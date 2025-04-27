@@ -28,6 +28,7 @@ TODO:
   * Done: `collect-fs-items-md5` - prepare the report including the info about
     skipped directories and exceptions and profiling information.
 
+  * BUG: `collect-fs-items-md5` - When preparing hash file use "Linux-style" path separators independently on OS (i.e. also on Windows)
   * `collect-fs-items-md5` - Create unit tests for classes implementing list of hashes: ListSubItemsWithMd5,
      FSItemWithMd5,
      FSItemWithMd5ConsumerFileWriter,
